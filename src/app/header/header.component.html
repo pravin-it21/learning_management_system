@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#" style="font-size: 22px;">RESTO Learn</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link fw-medium" routerLink="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-medium" routerLink="/courses">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-medium" routerLink="/enrollments">Enrollments</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-medium" routerLink="/quiz">Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-medium" routerLink="/progress">Progress</a>
+                </li>
+            </ul>
+
+            <!-- Search Bar -->
+            <form class="d-flex">
+                <input class="form-control me-2 rounded-3" type="search" placeholder="Search courses or topics">
+                <button class="btn btn-primary rounded-3" type="submit">Search</button>
+            </form>
+
+
+          
+            <!-- Authentication Links -->
+            <ul class="navbar-nav">
+                @if(isLoggedIn){
+                <li class="nav-item">
+                    <a class="nav-link fw-medium" routerLink="/logout">Logout</a>
+                </li>
+            }
+            <li class="nav-item">
+                <a class="nav-link fw-medium" routerLink="/register">SignUp</a>
+            </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-success rounded-3 px-3" routerLink="/login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<router-outlet/>
