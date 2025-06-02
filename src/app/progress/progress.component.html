@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Progress Tracking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2>User Progress Tracking</h2>
+        
+        <!-- Course Completion Progress -->
+        <h4>Course Completion</h4>
+        <div class="progress mb-3">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                75% Completed
+            </div>
+        </div>
+
+        <!-- Quiz Score Table -->
+        <h4>Quiz Scores</h4>
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Quiz Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Quiz 1</td><td>85%</td></tr>
+                <tr><td>Quiz 2</td><td>90%</td></tr>
+            </tbody>
+        </table>
+
+        <!-- Enrollment Count -->
+        <h4>Courses Enrolled: <span class="badge bg-primary">3</span></h4>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

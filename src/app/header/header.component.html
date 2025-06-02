@@ -36,15 +36,19 @@
             <ul class="navbar-nav">
                 @if(isLoggedIn){
                 <li class="nav-item">
-                    <a class="nav-link fw-medium" routerLink="/logout">Logout</a>
+                    <a class="nav-link fw-medium" (click)="logout()" routerLink="/login">Logout</a>
                 </li>
             }
+            @if(!isLoggedIn){
             <li class="nav-item">
                 <a class="nav-link fw-medium" routerLink="/register">SignUp</a>
             </li>
+        }
+        @if(!isLoggedIn){
                 <li class="nav-item">
                     <a class="nav-link btn btn-success rounded-3 px-3" routerLink="/login">Login</a>
                 </li>
+            }
             </ul>
         </div>
     </div>
