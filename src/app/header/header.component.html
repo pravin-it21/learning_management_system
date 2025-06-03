@@ -1,56 +1,56 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="#" style="font-size: 22px;">RESTO Learn</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+        <a class="navbar-brand fw-bold text-white" href="#" style="font-size: 24px;">RESTO Learn</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link fw-medium" routerLink="/home">Home</a>
+                    <a class="nav-link fw-medium text-light" routerLink="/home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-medium" routerLink="/courses">Courses</a>
+                    <a class="nav-link fw-medium text-light" routerLink="/courses">Courses</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-medium" routerLink="/enrollments">Enrollments</a>
+                    <a class="nav-link fw-medium text-light" routerLink="/enrollments">Enrollments</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-medium" routerLink="/quiz">Quiz</a>
+                    <a class="nav-link fw-medium text-light" routerLink="/userenrollments">EnrollmentsUser</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-medium" routerLink="/progress">Progress</a>
+                    <a class="nav-link fw-medium text-light" routerLink="/quiz">Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-medium text-light" routerLink="/progress">Progress</a>
                 </li>
             </ul>
 
-            <!-- Search Bar -->
             <form class="d-flex">
-                <input class="form-control me-2 rounded-3" type="search" placeholder="Search courses or topics">
-                <button class="btn btn-primary rounded-3" type="submit">Search</button>
+                <input class="form-control me-2 rounded-pill" type="search" placeholder="Search courses or topics" aria-label="Search">
+                <button class="btn btn-outline-warning rounded-pill" type="submit">Search</button>
             </form>
 
 
-          
-            <!-- Authentication Links -->
             <ul class="navbar-nav">
                 @if(isLoggedIn){
                 <li class="nav-item">
-                    <a class="nav-link fw-medium" (click)="logout()" routerLink="/login">Logout</a>
+                    <a class="nav-link fw-medium text-light" (click)="logout()" routerLink="/login">Logout</a>
                 </li>
-            }
-            @if(!isLoggedIn){
-            <li class="nav-item">
-                <a class="nav-link fw-medium" routerLink="/register">SignUp</a>
-            </li>
-        }
-        @if(!isLoggedIn){
+                }
+                @if(!isLoggedIn){
                 <li class="nav-item">
-                    <a class="nav-link btn btn-success rounded-3 px-3" routerLink="/login">Login</a>
+                    <a class="nav-link fw-medium text-light" routerLink="/register">SignUp</a>
                 </li>
-            }
+                }
+                @if(!isLoggedIn){
+                <li class="nav-item">
+                    <a class="nav-link btn btn-success rounded-pill px-3" routerLink="/login">Login</a>
+                </li>
+                }
             </ul>
         </div>
     </div>
 </nav>
-<router-outlet/>
+<div style="margin-top: 50px;"> <router-outlet/> </div>

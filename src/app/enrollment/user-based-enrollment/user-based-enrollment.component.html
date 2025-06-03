@@ -166,12 +166,9 @@
 <body>
     <div class="container mt-5">
         <div *ngIf="!selectedCourse">
-            <h2 class="text-center text-black">Explore Our Courses</h2>
+            <h2 class="text-center text-black">My Courses</h2>
 
             <div class="d-flex justify-content-between mb-3">
-                <button class="btn btn-success shadow-lg" routerLink="createCourse">
-                    <i class="fas fa-plus"></i> Add New Course
-                </button>
                 <input type="text" class="form-control w-25 shadow-sm" [(ngModel)]="searchText" placeholder="Search Courses">
             </div>
 
@@ -193,9 +190,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
         </div>
 
+         
         <div *ngIf="selectedCourse" class="mt-4">
             <button class="btn btn-secondary mb-3" (click)="selectedCourse = null">
                 <i class="fas fa-arrow-left"></i> Back to Courses
@@ -208,43 +206,14 @@
                 <p><strong>Instructor:</strong> {{ selectedCourse.instructorId }}</p>
                 <p><strong>Duration:</strong> {{ selectedCourse.courseDuration }} hours</p>
 
-                <div class="d-flex justify-content-end mt-3">
-                    <button class="btn btn-primary me-2" (click)="editCourse(selectedCourse)">
-                        <i class="fas fa-edit"></i> Edit
-                    </button>
-                    <button class="btn btn-danger" (click)="delete(selectedCourse)">
-                        <i class="fas fa-trash"></i> Delete
-                    </button>
-                </div>
+                
             </div>
         </div>
 
-        <div *ngIf="editSelectedCourse" class="mt-4">
-            <h3 class="mb-3">Edit Course {{editSelectedCourse.courseTitle}}</h3>
-            <form (ngSubmit)="onUpdate(editSelectedCourse)">
-                <div class="form-group mb-3">
-                    <label for="courseTitle">Course Title:</label>
-                    <input type="text" id="courseTitle" [(ngModel)]="editSelectedCourse.courseTitle" name="courseTitle" class="form-control">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="courseDescription">Description:</label>
-                    <input type="text" id="courseDescription" [(ngModel)]="editSelectedCourse.courseDescription" name="courseDescription" class="form-control">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="courseCategory">Category:</label>
-                    <input type="text" id="courseCategory" [(ngModel)]="editSelectedCourse.courseCategory" name="courseCategory" class="form-control">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="instructorId">Instructor ID:</label>
-                    <input type="number" id="instructorId" [(ngModel)]="editSelectedCourse.instructorId" name="instructorId" class="form-control">
-                </div>
-                <div class="form-group mb-3">
-                    <label for="courseDuration">Duration (hours):</label>
-                    <input type="number" id="courseDuration" [(ngModel)]="editSelectedCourse.courseDuration" name="courseDuration" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-primary">Update</button>
-            </form>
-        </div>
+       
+            
     </div>
 </body>
 </html>
+       
+           

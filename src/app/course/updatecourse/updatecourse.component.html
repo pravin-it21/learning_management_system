@@ -1,0 +1,88 @@
+
+
+
+<div>
+    <h3>Update Course</h3>
+    <form #courseForm="ngForm" (ngSubmit)="onUpdate(courseForm.value)">
+  
+        <div class="form-group">
+            <label>Course ID: </label>
+            <input required minlength="1" type="number" #courseIdRef="ngModel" name="courseId" ngModel class="form-control">
+            <div *ngIf="courseIdRef.errors && courseIdRef.touched" class="alert alert-danger">
+                <div [hidden]="!courseIdRef.errors['required']">Provide courseId </div>
+            </div>
+        </div>
+    <div class="form-group">
+      <label >Course Title:</label>
+      <input required minlength="6" type="text" #courseTitleRef="ngModel" name="courseTitle" ngModel class="form-control">
+      <div *ngIf="courseTitleRef.errors && courseTitleRef.touched" class="alert alert-danger">
+          <div *ngIf="courseTitleRef.errors['required']">Provide Course Title</div>
+          <div *ngIf="courseTitleRef.errors['minlength']">Name should be a minimum of 6 characters</div>
+      </div>
+  </div>
+     
+  
+      <div class="form-group">
+        <label >Course Description:</label>
+        <input required minlength="6" type="text" #courseDescriptionRef="ngModel" name="courseDescription" ngModel class="form-control">
+        <div *ngIf="courseDescriptionRef.errors && courseDescriptionRef.touched" class="alert alert-danger">
+            <div *ngIf="courseDescriptionRef.errors['required']">Provide Course Description</div>
+            <div *ngIf="courseDescriptionRef.errors['minlength']">Name should be a minimum of 6 characters</div>
+        </div>
+    </div>
+  
+    
+      <div class="form-group">
+        <label >Course Category:</label>
+        <input required minlength="6" type="text" #courseCategoryRef="ngModel" name="courseCategory" ngModel class="form-control">
+        <div *ngIf="courseCategoryRef.errors && courseCategoryRef.touched" class="alert alert-danger">
+            <div *ngIf="courseCategoryRef.errors['required']">Provide Course Category</div>
+            <div *ngIf="courseCategoryRef.errors['minlength']">Name should be a minimum of 6 characters</div>
+        </div>
+  
+      
+    </div>
+  
+  
+    <div class="form-group">
+      <label >Instructor Id:</label>
+      <input required minlength="1" type="number" #instructorIdRef="ngModel" name="instructorId" ngModel class="form-control">
+      <div *ngIf="instructorIdRef.errors && instructorIdRef.touched" class="alert alert-danger">
+          <div *ngIf="instructorIdRef.errors['required']">Provide instructor Id </div>
+      </div>
+  
+     
+  </div>
+  
+  
+     
+  
+      <div class="form-group">
+        <label >Prerequisites:</label>
+        <input required minlength="6" type="text" #prerequisitesRef="ngModel" name="prerequisites" ngModel class="form-control">
+        <div *ngIf="prerequisitesRef.errors && prerequisitesRef.touched" class="alert alert-danger">
+            <div *ngIf="prerequisitesRef.errors['required']">Provide Prerequisites</div>
+            <div *ngIf="prerequisitesRef.errors['minlength']">Name should be a minimum of 6 characters</div>
+        </div>
+    </div>
+    
+  
+  
+      <div class="form-group">
+        <label >Duration (in hours)</label>
+     
+  
+        <input required minlength="1" type="number" #durationRef="ngModel" name="duration" ngModel class="form-control">
+        <div *ngIf="durationRef.errors && durationRef.touched" class="alert alert-danger">
+            <div [hidden]="!durationRef.errors['required']">Provide duration</div>
+        </div>
+  
+        <input [disabled]="!courseForm.valid" type="submit" value="Create Course" class="btn btn-primary">
+        <button type="button" (click)="courseForm.reset()" class="btn btn-secondary">Reset</button>
+    </div>
+  
+    
+     
+    </form>
+  </div>
+  

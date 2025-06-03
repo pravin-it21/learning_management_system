@@ -1,36 +1,50 @@
 <div class="container">
     <button type="button" class="btn btn-success" routerLink="saveEnrollment">Add More Enrollments</button>
     <table class="table table-striped" *ngIf="enrollments && !error && enrollments.length > 0  ">
-        <thead>
-            <tr>
-                <th>Enrollment ID:</th>
-                <th>User ID:</th>
-                <th>Course ID:</th>
-                <th>Enrollment Date:</th>        
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let enrollment of enrollments" style="text-align: center;">
-                <td> {{enrollment.enrollmentId}} </td>
-                <td> {{enrollment.userId}} </td>
-                <td> {{enrollment.courseId}} </td>
-                <td> {{enrollment.enrollmentDate}} </td>
-                
-                <td>
-                    <i class="fas fa-trash" (click)=delete(enrollment)></i>
-                </td>
-                <td>
-                    <i class="fas fa-edit" (click)=update(enrollment)></i>
-                </td>
-                <td>
-            </tr>
-        </tbody>
+     <thead>
+      <tr>
+       <th>Enrollment ID:</th>
+       <th>User ID:</th>
+       <th>Course ID:</th>
+       <th>Enrollment Date:</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr *ngFor="let enrollment of enrollments" style="text-align: center;">
+       <td> {{enrollment.enrollmentId}} </td>
+       <td> {{enrollment.userId}} </td>
+       <td> {{enrollment.courseId}} </td>
+       <td> {{enrollment.enrollmentDate}} </td>
+  
+       <td>
+        <i class="fas fa-trash" (click)=delete(enrollment)></i>
+       </td>
+       <td>
+        <i class="fas fa-edit" (click)= editEnrollment(enrollment)></i>
+       </td>
+      </tr>
+     </tbody>
     </table>
     <div *ngIf="error">
-        <h4 class="alert alert-danger"> {{error}}</h4>
+     <h4 class="alert alert-danger"> {{error}}</h4>
     </div>
-
-
-</div>
-<div>
-    <router-outlet></router-outlet>
+  
+  
+    <div *ngIf="updateEnrollment" class="mt-4">
+     <h3>Edit Enrollment {{updateEnrollment.enrollmentId}}</h3>
+     <form (ngSubmit)="onUpdate(updateEnrollment)">
+      <div class="form-group">
+       <label for="userId">User Id:</label>
+       <input type="number" id="userId" [(ngModel)]="updateEnrollment.userId" name="userId" class="form-control">
+      </div>
+      <div class="form-group">
+       <label for="courseId">Course Id:</label>
+       <input type="number" id="courseId" [(ngModel)]="updateEnrollment.courseId" name="courseId" class="form-control">
+      </div>
+  
+      <button type="submit" class="btn btn-secondary">Update</button>
+     </form>
+    </div>
+   </div>
+  
+   <router-outlet></router-outlet>

@@ -16,7 +16,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
- 
+import { jwtDecode } from 'jwt-decode';
 @Component({
   selector: 'login',
   standalone: true,
@@ -59,8 +59,19 @@ export class LoginComponent {
           if (response && response.length > 0) {
             // Store JWT token
             localStorage.setItem('jwtToken', response);
+
+            let jwtToken=localStorage.getItem("jwtToken");
+            let decode:any=jwtDecode(jwtToken!); // Decode the JWT token to ensure it's valid
+            let userid=decode.userId
+          
+            localStorage.setItem('userId', userid);
+
+
             localStorage.setItem('username', this.username);
             localStorage.setItem('isLoggedIn', 'true');
+
+
+            
            
             // Optional: Store remember me preference
             if (this.rememberMe) {

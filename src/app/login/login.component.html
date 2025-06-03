@@ -1,89 +1,250 @@
-<!-- <div class="d-flex justify-content-center align-items-center vh-100">
-    <div class="card p-4 shadow-lg" style="width: 350px;">
-      <h3 class="text-center mb-3">Login</h3>
-      <form>
-        <div class="form-group mb-3">
-          <label for="email">Email</label>
-          <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
-        </div>
-        <div class="form-group mb-3">
-          <label for="password">Password</label>
-          <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Login</button>
-        <p class="text-center mt-3">
-          <a href="#">Forgot Password?</a> | <a href="#">Sign Up</a>
-        </p>
-      </form>
-    </div>
-  </div>
-   -->
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Login - RESTO Learn</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+     <style>
+         body {
+             font-family: 'Sora', sans-serif;
+             min-height: 100vh;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             background: linear-gradient(135deg, #f8f9fa 0%, #e0f7fa 100%); /* Light gradient background */
+             overflow: hidden;
+         }
 
-   <body class="bg-light">
-    <div class="container py-5">
-        <div class="card-container max-width-450 margin-auto">
-            <div class="card shadow-lg border-0 rounded-lg">
-                <div class="card-header bg-success text-white text-center py-3">
-                    <h3 class="mb-0"><i class="bi bi-lock-fill me-2"></i>LOGIN</h3>
-                </div>
-                <div class="card-body p-4">
-                    <div class="alert alert-danger" id="loginError" role="alert" [style.display]="loginFailed ? 'block' : 'none'">
-                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
-                        {{ errorMessage || 'Invalid username or password!' }}
-                    </div>
- 
-                    <form id="loginForm" #loginForm="ngForm" (ngSubmit)="validate(loginForm)">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text bg-success text-white">
-                                <i class="bi bi-person-fill"></i>
-                            </span>
-                            <div class="form-floating">
-                                <input type="text" [(ngModel)]="username" name="username" class="form-control" id="username" placeholder="Enter username"
-                                    required #usernameInput="ngModel" [disabled]="isLoading">
-                                <label for="username">Username</label>
-                                <div class="invalid-feedback" [style.display]="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched) ? 'block' : 'none'">
-                                    Please enter your username
-                                </div>
-                            </div>
-                        </div>
- 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text bg-dark text-white">
-                                <i class="bi bi-key-fill"></i>
-                            </span>
-                            <div class="form-floating">
-                                <input type="password" [(ngModel)]="password" name="password" class="form-control" id="password" placeholder="Enter password"
-                                    required #passwordInput="ngModel" [disabled]="isLoading">
-                                <label for="password">Password</label>
-                                <div class="invalid-feedback" [style.display]="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched) ? 'block' : 'none'">
-                                    Please enter your password
-                                </div>
-                            </div>
-                        </div>
- 
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="rememberMe" [(ngModel)]="rememberMe" name="rememberMe" [disabled]="isLoading">
-                            <label class="form-check-label" for="rememberMe">Remember me</label>
-                        </div>
- 
-                        <div class="d-grid gap-2 mb-3">
-                            <button type="submit" class="btn btn-dark btn-lg" [disabled]="loginForm.invalid || isLoading">
-                                <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
-                                <i class="bi bi-box-arrow-in-right me-2" *ngIf="!isLoading"></i>
-                                {{ isLoading ? 'Logging in...' : 'Login' }}
-                            </button>
-                        </div>
- 
-                        <div class="text-center">
-                            <a routerLink="/registration" class="btn btn-outline-secondary" [class.disabled]="isLoading">
-                                <i class="bi bi-person-plus-fill me-2"></i>Register New Account
-                            </a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
- 
- 
+         .login-container {
+             background-color: white;
+             border-radius: 15px;
+             box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+             overflow: hidden;
+             display: flex;
+             width: 90%;
+             max-width: 1000px;
+         }
+
+         .login-left {
+             flex: 1;
+             position: relative;
+             overflow: hidden;
+         }
+
+         .login-left img {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             object-fit: cover; /* Ensures the image covers the entire area */
+         }
+
+         .login-left-overlay {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background-color: rgba(0, 0, 0, 0.1); /* Subtle overlay */
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             color: white;
+             font-size: 2rem;
+             font-weight: bold;
+             font-family: 'Poppins', sans-serif;
+             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+             animation: fadeInUp 1s ease-in-out;
+         }
+
+         .login-right {
+             flex: 1;
+             padding: 5rem 3rem;
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             animation: slideInRight 0.7s ease-out;
+         }
+
+         .login-header h2 {
+             font-family: 'Poppins', sans-serif;
+             font-size: 3rem;
+             font-weight: 700;
+             color: #343a40;
+             margin-bottom: 2rem;
+             animation: fadeInDown 0.7s ease-out;
+         }
+
+         .form-floating {
+             margin-bottom: 2rem;
+             animation: fadeInUp 0.7s ease-out;
+         }
+
+         .form-control:focus {
+             box-shadow: 0 0 0 0.25rem rgba(234, 161, 4, 0.25);
+             border-color: #eaa104;
+         }
+
+         .btn-primary {
+             background-color: #eeb600;
+             color: #000913; /* Dark text on yellow */
+             border: none;
+             border-radius: 0.5rem;
+             padding: 1.2rem 2.5rem;
+             font-size: 1.2rem;
+             font-weight: 600;
+             cursor: pointer;
+             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+             animation: pulse 1.5s infinite alternate;
+         }
+
+         .btn-primary:hover {
+             transform: translateY(-3px);
+             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+         }
+
+         .form-check {
+             margin-bottom: 2rem;
+             animation: fadeInLeft 0.7s ease-out;
+         }
+
+         .login-footer {
+             margin-top: 3rem;
+             text-align: center;
+             color: #6c757d;
+             animation: fadeInUp 0.7s ease-out 0.2s;
+         }
+
+         .login-footer a {
+             color: #000913;
+             text-decoration: none;
+             font-weight: 500;
+         }
+
+         .login-footer a:hover {
+             text-decoration: underline;
+         }
+
+         .alert-danger {
+             animation: shakeX 0.5s ease-in-out;
+         }
+
+         /* Animations */
+         @keyframes fadeIn {
+             from { opacity: 0; }
+             to { opacity: 1; }
+         }
+
+         @keyframes slideInRight {
+             from { transform: translateX(50px); opacity: 0; }
+             to { transform: translateX(0); opacity: 1; }
+         }
+
+         @keyframes fadeInUp {
+             from { transform: translateY(30px); opacity: 0; }
+             to { transform: translateY(0); opacity: 1; }
+         }
+
+         @keyframes fadeInDown {
+             from { transform: translateY(-30px); opacity: 0; }
+             to { transform: translateY(0); opacity: 1; }
+         }
+
+         @keyframes fadeInLeft {
+             from { transform: translateX(-30px); opacity: 0; }
+             to { transform: translateX(0); opacity: 1; }
+         }
+
+         @keyframes pulse {
+             0% { transform: scale(1); }
+             100% { transform: scale(1.05); }
+         }
+
+         @keyframes shakeX {
+             from, to { transform: translate3d(0, 0, 0); }
+             10%, 30%, 50%, 70%, 90% { transform: translate3d(-10px, 0, 0); }
+             20%, 40%, 60%, 80% { transform: translate3d(10px, 0, 0); }
+         }
+
+         /* Responsive Design */
+         @media (max-width: 992px) {
+             .login-container {
+                 width: 95%;
+                 flex-direction: column;
+             }
+             .login-left {
+                 min-height: 300px;
+             }
+         }
+
+         @media (max-width: 768px) {
+             .login-right {
+                 padding: 3rem;
+             }
+             .login-header h2 {
+                 font-size: 2.5rem;
+             }
+         }
+     </style>
+ </head>
+ <body>
+     <div class="login-container">
+         <div class="login-left">
+             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" alt="Learning Illustration">
+             <div class="login-left-overlay">
+                 Welcome to RESTO Learn!
+             </div>
+         </div>
+         <div class="login-right">
+             <div class="login-header">
+                 <h2 class="mb-4 fw-bold text-black">Sign In</h2>
+             </div>
+             <div class="alert alert-danger alert-dismissible fade show" id="loginError" role="alert" [style.display]="loginFailed ? 'block' : 'none'">
+                 <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                 {{ errorMessage || 'Invalid username or password!' }}
+                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+             </div>
+             <form id="loginForm" #loginForm="ngForm" (ngSubmit)="validate(loginForm)">
+                 <div class="form-floating">
+                     <input type="text" [(ngModel)]="username" name="username" class="form-control" id="username" placeholder="Enter Username" required #usernameInput="ngModel" [disabled]="isLoading">
+                     <label for="username">Username</label>
+                     <div class="invalid-feedback d-block" [style.display]="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched) ? 'block' : 'none'">
+                         Please enter your username
+                     </div>
+                 </div>
+                 <div class="form-floating">
+                     <input type="password" [(ngModel)]="password" name="password" class="form-control" id="password" placeholder="Enter Password" required #passwordInput="ngModel" [disabled]="isLoading">
+                     <label for="password">Password</label>
+                     <div class="invalid-feedback d-block" [style.display]="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched) ? 'block' : 'none'">
+                         Please enter your password
+                     </div>
+                 </div>
+                 <div class="form-check">
+                     <input class="form-check-input" type="checkbox" id="rememberMe" [(ngModel)]="rememberMe" name="rememberMe" [disabled]="isLoading">
+                     <label class="form-check-label" for="rememberMe">Remember me</label>
+                 </div>
+                 <div class="d-grid">
+                     <button type="submit" class="btn btn-primary btn-lg" [disabled]="loginForm.invalid || isLoading">
+                         <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+                         <i class="bi bi-box-arrow-in-right me-2" *ngIf="!isLoading"></i>
+                         {{ isLoading ? 'Logging in...' : 'Login' }}
+                     </button>
+                 </div>
+             </form>
+             <div class="login-footer">
+                 Don't have an account? <a routerLink="/registration">Sign Up</a>
+             </div>
+         </div>
+     </div>
+
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+ </body>
+ </html>

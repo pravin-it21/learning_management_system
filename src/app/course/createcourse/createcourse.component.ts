@@ -1,14 +1,3 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-createcourse',
-//   imports: [],
-//   templateUrl: './createcourse.component.html',
-//   styleUrl: './createcourse.component.css'
-// })
-// export class CreatecourseComponent {
-
-// }
 
 
 import { Component } from '@angular/core';

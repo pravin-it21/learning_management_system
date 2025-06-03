@@ -56,12 +56,12 @@ export class CourseService {
   public onUpdate(updatedCourse: Course) {
     console.log("ins service update Course");
     // return this.client.post(`${this.path}/create`, createCourse, { responseType: 'text' });
-
-    return this.client.put(`${this.path}/update`, updatedCourse);
+    return this.client.put(`${this.path}/update`, updatedCourse,{ headers: this.headers });
+    
   }
   deleteCourse(courseId: number) {
     console.log("ins service delete Course");
-    return this.client.delete(`${this.path}/delete` + courseId,{ responseType: 'text' });
+    return this.client.delete(`${this.path}/delete/` + courseId,{headers: this.headers , responseType: 'text' });
   }
 
 }

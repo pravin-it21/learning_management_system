@@ -8,6 +8,8 @@ import { CourseComponent } from './course/course.component';
 import { EnrollmentComponent } from './enrollment/enrollment.component';
 import { CreatecourseComponent } from './course/createcourse/createcourse.component';
 import { SaveenrollmentComponent } from './enrollment/saveenrollment/saveenrollment.component';
+import { UpdatecourseComponent } from './course/updatecourse/updatecourse.component';
+import { UserBasedEnrollmentComponent } from './enrollment/user-based-enrollment/user-based-enrollment.component';
 export const routes: Routes = [
     {path:"login",component:LoginComponent},
     {path:"",component:LandingpageComponent},
@@ -19,6 +21,9 @@ export const routes: Routes = [
     {path:"enrollments",component:EnrollmentComponent},
     { path: "courses/createCourse", component: CreatecourseComponent },
     {path:"enrollments/saveEnrollment",component:SaveenrollmentComponent},
+    { path: "courses/updateCourse", component: UpdatecourseComponent },
+    { path: "userenrollments", component: UserBasedEnrollmentComponent },
+
 
 
 ];
