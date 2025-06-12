@@ -4,9 +4,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-
+userRole = localStorage.getItem('roles')
   constructor() { }
+  getUserRole(){
+    return this.userRole;
+  }
 
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('jwtToken'); // Example using local storage
+  }
  
 }
 

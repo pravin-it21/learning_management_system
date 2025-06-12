@@ -1,0 +1,260 @@
+body {
+    font-family: 'Sora', sans-serif;
+    background-image: url('https://plus.unsplash.com/premium_photo-1699255468644-ff9b060a90d4?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    color: #343a40;
+    padding: 30px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h2, h3, h5 {
+    color: #ffc107;
+}
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    transition: transform 0.2s ease-in-out;
+}
+.btn-success:hover {
+    background-color: #1e7e34;
+    border-color: #1c7430;
+    transform: scale(1.05);
+}
+.btn-info {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    transition: transform 0.2s ease-in-out;
+}
+.btn-info:hover {
+    background-color: #eeb600;
+    border-color: #eeb600;
+    transform: scale(1.05);
+}
+.btn-primary {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    transition: transform 0.2s ease-in-out;
+}
+.btn-primary:hover {
+    background-color: #eeb600;
+    border-color: #eeb600;
+    transform: scale(1.05);
+}
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    transition: transform 0.2s ease-in-out;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    transform: scale(1.05);
+}
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    transition: transform 0.2s ease-in-out;
+}
+.btn-secondary:hover {
+    background-color: #545b62;
+    border-color: #4e555b;
+    transform: scale(1.05);
+}
+.course-card-wrapper {
+    perspective: 1000px;
+}
+.course-card {
+    background: white;
+    color: #37474f;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.course-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+.card-body {
+    padding: 25px;
+    position: relative;
+    z-index: 1;
+}
+.card-title {
+    color: #010000;
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    transition: color 0.3s ease-in-out;
+}
+.course-card:hover .card-title {
+    color: #eeb600;
+}
+.card-text {
+    color: #546e7a;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+.badge-primary {
+    background-color: #0a0700;
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.course-card strong {
+    color: #eeb600;
+}
+.view-details-button {
+    background-color: #000913;
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease-in-out;
+}
+.view-details-button:hover {
+    background-color: #ffc107;
+    color: #000913;
+    transform: scale(1.08);
+}
+/* Course Details Styles */
+.course-details-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    width: 90%;
+    max-width: 900px;
+}
+.course-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.course-details-header h2 {
+    color: #000000;
+    margin: 0;
+}
+.course-details-info p {
+    color: #546e7a;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+.course-details-info strong {
+    font-weight: 600;
+    color: #0b0800;
+}
+.course-details-actions button {
+    margin-left: 10px;
+}
+.course-badge {
+    background-color: #0a0700;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+/* Edit Course Form Styles */
+.edit-course-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    width: 80%;
+    max-width: 700px;
+}
+.edit-course-container h3 {
+    color: #000000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.edit-course-container h3 small {
+    color: #546e7a;
+}
+.form-group label {
+    color: #37474f;
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.btn-take-quiz { /* Custom class for the quiz button */
+    background-color: #000; /* Black background */
+    border-color: #000;
+    color: white; /* White text */
+    padding: 10px 20px; /* Smaller padding */
+    font-size: 0.9rem; /* Smaller font size */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: fit-content; /* Adjust width to content */
+    margin: 20px auto 0; /* Center the button */
+}
+
+.btn-take-quiz:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+.edit-course-actions {
+    margin-top: 30px;
+    text-align: center;
+}
+.edit-course-actions button {
+    margin: 0 10px;
+}
+/* Responsive Layout */
+.row {
+    animation: fadeInUp 0.7s ease-out both;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@media (max-width: 768px) {
+    .col-md-4 {
+        width: 100%;
+    }
+    .course-details-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .course-details-actions {
+        margin-top: 20px;
+    }
+    .course-details-actions button {
+        margin: 5px 0;
+    }
+}

@@ -1,168 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RESTO Learn - Create Course</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-         font-family: 'Sora', sans-serif;
-         background-color: #f8f9fa; /* White Background */
-         color: #343a40; /* Dark Text */
-         padding: 30px;
-         min-height: 100vh;
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         justify-content: center; /* Centers horizontally */
-         margin: 0;
-        }
-        h3 {
-         color: #ffc107; /* Yellow accent color */
-         margin-bottom: 20px;
-        }
-        .form-container {
-         background-color: #fff;
-         padding: 40px;
-         border-radius: 15px;
-         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-         max-width: 600px;
-         width: 100%;
-         margin-top: 30px;
-         animation: fadeIn 0.5s ease-in-out;
-        }
-        .form-group {
-         margin-bottom: 20px;
-        }
-        .form-group label {
-         color: #343a40;
-         display: block;
-         margin-bottom: 0.5rem;
-         font-weight: bold;
-        }
-        .form-control {
-         background-color: #fff;
-         color: #343a40;
-         border: 1px solid #ced4da;
-         border-radius: 0.25rem;
-         padding: 0.75rem 1rem;
-         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        }
-        .form-control:focus {
-         border-color: #ffc107;
-         outline: 0;
-         box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
-        }
-        .alert-danger {
-         background-color: #f8d7da;
-         color: #721c24;
-         border-color: #f5c6cb;
-         padding: 0.75rem 1.25rem;
-         margin-top: 0.5rem;
-         border-radius: 0.25rem;
-        }
-        .btn-primary {
-         background-color: #ffc107; /* Yellow primary button */
-         border-color: #ffc107;
-         color: #000913;
-         padding: 0.75rem 1.5rem;
-         border-radius: 0.25rem;
-         cursor: pointer;
-         transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, transform 0.2s ease-in-out;
-        }
-        .btn-primary:hover {
-         background-color: #eeb600;
-         border-color: #eeb600;
-         transform: scale(1.05);
-        }
-        .btn-secondary {
-         background-color: #6c757d;
-         border-color: #6c757d;
-         color: #fff;
-         padding: 0.75rem 1.5rem;
-         border-radius: 0.25rem;
-         cursor: pointer;
-         transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, transform 0.2s ease-in-out;
-         margin-left: 10px;
-        }
-        .btn-secondary:hover {
-         background-color: #545b62;
-         border-color: #4e555b;
-         transform: scale(1.05);
-        }
-        /* Animation for the form */
-        @keyframes fadeIn {
-         from { opacity: 0; }
-         to { opacity: 1; }
-        }
-       </style>
-</head>
+
 <body>
-    <div class="container justify-content-center">
+    <div class="container">
         <div class="form-container">
-            <h3 class="text-center">Create Course</h3>
+            <h3 class="text-center"><i class="fas fa-plus-circle me-2"></i> Create New Course</h3>
             <form #courseForm="ngForm" (ngSubmit)="onSubmit(courseForm.value)">
 
                 <div class="form-group">
-                    <label>Course Title:</label>
-                    <input required minlength="6" type="text" #courseTitleRef="ngModel" name="courseTitle" ngModel class="form-control">
+                    <label for="courseTitle"><i class="fas fa-book me-2"></i> Course Title:</label>
+                    <input required minlength="6" type="text" #courseTitleRef="ngModel" name="courseTitle" ngModel class="form-control" id="courseTitle" placeholder="Enter course title">
                     <div *ngIf="courseTitleRef.errors && courseTitleRef.touched" class="alert alert-danger">
-                        <div *ngIf="courseTitleRef.errors['required']">Provide Course Title</div>
-                        <div *ngIf="courseTitleRef.errors['minlength']">Title should be a minimum of 6 characters</div>
+                        <div *ngIf="courseTitleRef.errors['required']"><i class="fas fa-exclamation-triangle me-2"></i> Provide Course Title</div>
+                        <div *ngIf="courseTitleRef.errors['minlength']"><i class="fas fa-exclamation-circle me-2"></i> Title should be a minimum of 6 characters</div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Course Description:</label>
-                    <input required minlength="6" type="text" #courseDescriptionRef="ngModel" name="courseDescription" ngModel class="form-control">
+                    <label for="courseDescription"><i class="fas fa-file-alt me-2"></i> Course Description:</label>
+                    <input required minlength="10" type="text" #courseDescriptionRef="ngModel" name="courseDescription" ngModel class="form-control" id="courseDescription" placeholder="Enter course description">
                     <div *ngIf="courseDescriptionRef.errors && courseDescriptionRef.touched" class="alert alert-danger">
-                        <div *ngIf="courseDescriptionRef.errors['required']">Provide Course Description</div>
-                        <div *ngIf="courseDescriptionRef.errors['minlength']">Description should be a minimum of 6 characters</div>
+                        <div *ngIf="courseDescriptionRef.errors['required']"><i class="fas fa-exclamation-triangle me-2"></i> Provide Course Description</div>
+                        <div *ngIf="courseDescriptionRef.errors['minlength']"><i class="fas fa-exclamation-circle me-2"></i> Description should be a minimum of 10 characters</div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Course Category:</label>
-                    <input required minlength="6" type="text" #courseCategoryRef="ngModel" name="courseCategory" ngModel class="form-control">
+                    <label for="courseCategory"><i class="fas fa-tags me-2"></i> Course Category:</label>
+                    <input required minlength="3" type="text" #courseCategoryRef="ngModel" name="courseCategory" ngModel class="form-control" id="courseCategory" placeholder="Enter course category">
                     <div *ngIf="courseCategoryRef.errors && courseCategoryRef.touched" class="alert alert-danger">
-                        <div *ngIf="courseCategoryRef.errors['required']">Provide Course Category</div>
-                        <div *ngIf="courseCategoryRef.errors['minlength']">Category should be a minimum of 6 characters</div>
+                        <div *ngIf="courseCategoryRef.errors['required']"><i class="fas fa-exclamation-triangle me-2"></i> Provide Course Category</div>
+                        <div *ngIf="courseCategoryRef.errors['minlength']"><i class="fas fa-exclamation-circle me-2"></i> Category should be a minimum of 3 characters</div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Instructor Id:</label>
-                    <input required minlength="1" type="number" #instructorIdRef="ngModel" name="instructorId" ngModel class="form-control">
+                <!-- <div class="form-group">
+                    <label for="instructorId"><i class="fas fa-chalkboard-teacher me-2"></i> Instructor Id:</label>
+                    <input required minlength="1" type="number" #instructorIdRef="ngModel" name="instructorId" ngModel class="form-control" id="instructorId" placeholder="Enter instructor ID">
                     <div *ngIf="instructorIdRef.errors && instructorIdRef.touched" class="alert alert-danger">
-                        <div *ngIf="instructorIdRef.errors['required']">Provide instructor Id </div>
+                        <div *ngIf="instructorIdRef.errors['required']"><i class="fas fa-exclamation-triangle me-2"></i> Provide instructor Id </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="form-group">
-                    <label>Prerequisites:</label>
-                    <input required minlength="6" type="text" #prerequisitesRef="ngModel" name="prerequisites" ngModel class="form-control">
+                    <label for="prerequisites"><i class="fas fa-list-check me-2"></i> Prerequisites:</label>
+                    <input required minlength="10" type="text" #prerequisitesRef="ngModel" name="prerequisites" ngModel class="form-control" id="prerequisites" placeholder="Enter course prerequisites">
                     <div *ngIf="prerequisitesRef.errors && prerequisitesRef.touched" class="alert alert-danger">
-                        <div *ngIf="prerequisitesRef.errors['required']">Provide Prerequisites</div>
-                        <div *ngIf="prerequisitesRef.errors['minlength']">Prerequisites should be a minimum of 6 characters</div>
+                        <div *ngIf="prerequisitesRef.errors['required']"><i class="fas fa-exclamation-triangle me-2"></i> Provide Prerequisites</div>
+                        <div *ngIf="prerequisitesRef.errors['minlength']"><i class="fas fa-exclamation-circle me-2"></i> Prerequisites should be a minimum of 10 characters</div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Duration (in hours)</label>
-                    <input required minlength="1" type="number" #durationRef="ngModel" name="duration" ngModel class="form-control">
+                    <label for="courseDuration"><i class="fas fa-hourglass-half me-2"></i> Duration (in hours)</label>
+                    <input required minlength="1" type="number" #durationRef="ngModel" name="courseDuration" ngModel class="form-control" id="courseDuration" placeholder="Enter course duration">
                     <div *ngIf="durationRef.errors && durationRef.touched" class="alert alert-danger">
-                        <div [hidden]="!durationRef.errors['required']">Provide duration</div>
+                        <div [hidden]="!durationRef.errors['required']"><i class="fas fa-exclamation-triangle me-2"></i> Provide duration</div>
                     </div>
-                    <button type="submit" [disabled]="!courseForm.valid" class="btn btn-primary">Create Course</button>
-                    <button type="button" (click)="courseForm.reset()" class="btn btn-secondary">Reset</button>
                 </div>
+
+                <div class="form-group">
+                    <label for="courseContent"><i class="fas fa-book-open me-2"></i> Course Content:</label>
+                    <textarea required minlength="20" rows="7" #courseContentRef="ngModel" name="courseContent" ngModel class="form-control" id="courseContent" placeholder="Enter course content"></textarea>
+                    <div *ngIf="courseContentRef.errors && courseContentRef.touched" class="alert alert-danger">
+                        <div *ngIf="courseContentRef.errors['required']"><i class="fas fa-exclamation-triangle me-2"></i> Provide Course Content</div>
+                        <div *ngIf="courseContentRef.errors['minlength']"><i class="fas fa-exclamation-circle me-2"></i> Content should be a minimum of 20 characters</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="youtubeLink"><i class="fab fa-youtube me-2"></i> YouTube Video Link:</label>
+                    <input type="url" required #youtubeLinkRef="ngModel" name="youtubeLink" ngModel class="form-control" id="youtubeLink" placeholder="Enter YouTube video link" pattern="^(https?://)?(www\.)?(youtube\.com|youtu\.?be)/.+$">
+                    <div *ngIf="youtubeLinkRef.errors && youtubeLinkRef.touched" class="alert alert-danger">
+                        <div *ngIf="youtubeLinkRef.errors['required']"><i class="fas fa-exclamation-triangle me-2"></i> Provide YouTube link</div>
+                        <div *ngIf="youtubeLinkRef.errors['pattern']"><i class="fas fa-exclamation-circle me-2"></i> Please enter a valid YouTube link</div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" [disabled]="!courseForm.valid" class="btn btn-primary"><i class="fas fa-plus me-2"></i> Create Course</button>
+                    <button type="button" (click)="courseForm.reset()" class="btn btn-secondary"><i class="fas fa-undo me-2"></i> Reset</button>
+                </div>
+
             </form>
         </div>
     </div>
 </body>
-</html>

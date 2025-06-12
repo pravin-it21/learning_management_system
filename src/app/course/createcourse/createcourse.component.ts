@@ -15,14 +15,32 @@ import { CommonModule } from '@angular/common';
 export class CreatecourseComponent {
   constructor(private myservice: CourseService, private router: Router) { }//dependency injection
 
+  // onSubmit(createCourse: Course): void {
+  //   console.log(createCourse);
+  //   this.myservice.createCourse(createCourse).subscribe(
+  //     data => {
+  //       alert(data); // Assuming the response contains a message property
+  //       this.router.navigate(['/courses']);
+  //     },
+  //     error => {
+  //       console.error("Error adding course:", error);
+  //       alert("Failed to create course. Please try again.");
+  //     }
+  //   );
+  // }
 
 
-  onSubmit(createCourse: Course): void { // Changed return type to void
+  onSubmit(createCourse: Course): void {
     console.log(createCourse);
+    // Ensure youtubeLink is an array if your backend strictly requires it
+    createCourse.instructorId = Number(localStorage.getItem('userId'))
+    if (createCourse.youtubeLink && typeof createCourse.youtubeLink === 'string') {
+      createCourse.youtubeLink = [createCourse.youtubeLink];
+    }
     this.myservice.createCourse(createCourse).subscribe(
       data => {
-        alert(data); // Assuming the response contains a message property
-        this.router.navigate(['/course']);
+        alert(data);
+        this.router.navigate(['/courses']);
       },
       error => {
         console.error("Error adding course:", error);
@@ -31,4 +49,3 @@ export class CreatecourseComponent {
     );
   }
 }
-

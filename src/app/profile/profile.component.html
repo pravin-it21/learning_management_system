@@ -1,0 +1,38 @@
+<div class="container mt-5">
+    <h2 class="mb-4">Profile Settings</h2>
+    <form>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" value="johndoe" aria-describedby="usernameHelp">
+            <div id="usernameHelp" class="form-text">This is your public username.</div>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" value="john.doe@example.com" aria-describedby="emailHelp" disabled>
+            <div id="emailHelp" class="form-text">You cannot change your email address.</div>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" value="John Doe">
+        </div>
+        <div class="mb-3">
+            <label for="bio" class="form-label">Bio</label>
+            <textarea class="form-control" id="bio" rows="3">A passionate learner exploring new horizons.</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="profilePicture" class="form-label">Profile Picture</label>
+            <input type="file" class="form-control" id="profilePicture">
+        </div>
+        <div class="mb-3">
+            <label for="newPassword" class="form-label">New Password</label>
+            <input type="password" class="form-control" id="newPassword">
+        </div>
+        <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm New Password</label>
+            <input type="password" class="form-control" id="confirmPassword">
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-Yt+Y7d4V7wZl5WjI7s5U/ytmZ/9hKczOqVFFVxnj6iLKM5wuRixAePUQ5Jc9bUjO" crossorigin="anonymous"></script>

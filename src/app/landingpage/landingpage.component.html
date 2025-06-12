@@ -1,146 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RESTO Learn - Your Learning Journey Starts Here</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Sora', sans-serif;
-            background-image: url('https://plus.unsplash.com/premium_photo-1699255468644-ff9b060a90d4?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-            background-color: #d6d0d0; /* White Background */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            color: #343a40; /* Dark Text */
-            padding: 30px;
-            overflow: hidden;
-        }
-        .hero {
-            padding: 80px 30px;
-            border-radius: 20px;
-            max-width: 800px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(5px);
-            animation: fadeIn 1s ease-in-out;
-        }
-        .hero h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            animation: slideDown 0.8s ease-in-out 0.3s both;
-        }
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            line-height: 1.8;
-            color: #6c757d;
-            animation: slideUp 0.8s ease-in-out 0.5s both;
-        }
-        .btn-primary-animated {
-            background-color: #eeb600;
-            color: white;
-            padding: 16px 40px;
-            font-size: 1.2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            border: none;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease;
-            animation: pulse 1.5s infinite alternate;
-        }
-        .btn-primary-animated:hover {
-            transform: scale(1.05); /* Subtle scale on hover */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            background-color: #000913; /* Darker shade on hover */
-        }
 
-        /* "Why Choose Us" Section */
-        .why-choose-us {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 50px;
-            max-width: 900px;
-        }
-        .feature-card {
-            background-color: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(5px);
-            color: #343a40;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 20px;
-            width: calc(33% - 40px);
-            min-width: 250px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 0.8s ease-in-out both;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Added transition for box-shadow */
-        }
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Slightly enhanced shadow on hover */
-        }
-        .feature-card i {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #eaa104;
-            transition: transform 0.3s ease-in-out; /* Transition for icon hover */
-        }
-        .feature-card i:hover {
-            transform: rotate(30deg); /* Subtle rotation on icon hover */
-        }
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            font-weight: bold;
-            color: #343a40;
-        }
-        .feature-card p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #6c757d;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
-</head>
 <body>
     <div class="hero">
         <h1 class="fw-bold text-black">Unlock Your Potential with RESTO Learn</h1>
@@ -166,6 +24,73 @@
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <section class="popular-topics">
+        <h2>Explore Popular Learning Topics</h2>
+        <div class="topic-list">
+            <div class="topic-card">
+                <i class="fas fa-code"></i>
+                <h3>Programming</h3>
+                <p>Dive into the world of coding with our comprehensive programming courses.</p>
+                <a href="/courses">Explore</a>
+            </div>
+            <div class="topic-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Business & Finance</h3>
+                <p>Develop your business acumen and financial literacy with our expert-led courses.</p>
+                <a href="/courses">Explore</a>
+            </div>
+            <div class="topic-card">
+                <i class="fas fa-palette"></i>
+                <h3>Design</h3>
+                <p>Unleash your creativity with our wide range of design courses.</p>
+                <a href="/courses">Explore</a>
+            </div>
+            <div class="topic-card">
+                <i class="fas fa-language"></i>
+                <h3>Languages</h3>
+                <p>Learn a new language and expand your horizons.</p>
+                <a href="/courses">Explore</a>
+            </div>
+            <div class="topic-card">
+                <i class="fas fa-flask"></i>
+                <h3>Science & Technology</h3>
+                <p>Explore the fascinating world of science and technology.</p>
+                <a href="/courses">Explore</a>
+            </div>
+            <div class="topic-card">
+                <i class="fas fa-camera"></i>
+                <h3>Photography</h3>
+                <p>Capture the beauty around you and master the art of photography.</p>
+                <a href="/courses">Explore</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>What Our Learners Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>"RESTO Learn has been an incredible platform for me. The courses are well-structured and the instructors are fantastic!"</p>
+                <p class="author">- Sarah M.</p>
+            </div>
+            <div class="testimonial-card">
+                <p>"I was able to switch my career thanks to the comprehensive courses offered here. Highly recommended!"</p>
+                <p class="author">- John B.</p>
+            </div>
+            <div class="testimonial-card">
+                <p>"The flexible learning schedule allowed me to study at my own pace. Excellent content and support!"</p>
+                <p class="author">- David L.</p>
+            </div>
+        </div>
+    </section>
+    @if(!isLoggedIn){
+    <section class="cta">
+        <h2>Ready to Start Your Learning Journey?</h2>
+        <p>Join thousands of learners and unlock your full potential with our free courses. Your path to knowledge starts now!</p>
+        <a href="/register" class="btn btn-primary-animated">Sign Up for Free</a>
+    </section>
+}
+
+  
+
 </body>
-</html>

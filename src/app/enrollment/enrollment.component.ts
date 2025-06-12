@@ -5,6 +5,7 @@ import { Enrollment,EnrollmentService } from '../enrollment.service';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-enrollment',
@@ -19,13 +20,30 @@ export class EnrollmentComponent {
   searchText = "";
   error = null;
   updateEnrollment: any = null;
-  constructor(private myservice: EnrollmentService, private router: Router) {
+  constructor(private myservice: EnrollmentService, private router: Router, private userService: UserService) {}
+  // constructor(private myservice: EnrollmentService, private router: Router) {
+  //   this.myservice.getAllEnrollments().subscribe(
+  //     response => this.handleSuccessfulResponse(response)
+  //     ,
+  //     error => { this.error = error.message }
+  //   );
+  // }
+
+  ngOnInit(): void {
+    const userRole = localStorage.getItem('roles')?.toLocaleLowerCase(); // Fix: Ensure proper function call
+
+    if (userRole !== 'admin') {
+      alert("Access Denied! Only admins can view enrollments.");
+      this.router.navigate(['/home']);
+      return;
+    }
+
     this.myservice.getAllEnrollments().subscribe(
-      response => this.handleSuccessfulResponse(response)
-      ,
+      response => this.handleSuccessfulResponse(response),
       error => { this.error = error.message }
     );
-  }
+}
+
   handleSuccessfulResponse(response) {
     console.log(response)
     this.enrollments = response;

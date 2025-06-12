@@ -45,6 +45,21 @@ export class CourseService {
 }
 
 
+public getCourseDetails(courseId:number):Observable<any>{
+  console.log(courseId)
+  console.log("ins service getcourse details");
+// return this.client.get<any>(`${this.path}/fetchById/` + courseId,{ headers: this.headers });
+return this.client.get(`${this.path}/fetchById/` + courseId,{headers: this.headers});
+
+  // return this.client.get<any>(`http://localhost:9090/course/fetchById/${courseId}`);
+}
+
+public fetchCoursesByInstructorId(userId: string | null): Observable<any> {
+  console.log("hi")
+  return this.client.get(`${this.path}/fetchCoursesByInstructorId/${userId}`,{headers:this.headers});
+}
+
+
     
 
   public update(updateCourse: Course) {
@@ -67,7 +82,16 @@ export class CourseService {
 }
 
 
-export class Course {
+// export class Course {
+//   courseId: number;
+//   courseTitle: string;
+//   courseDescription: string;
+//   courseCategory: string;
+//   instructorId: number;
+//   prerequisites: string;
+//   courseDuration: number;
+// }
+export interface Course {
   courseId: number;
   courseTitle: string;
   courseDescription: string;
@@ -75,5 +99,6 @@ export class Course {
   instructorId: number;
   prerequisites: string;
   courseDuration: number;
+  courseContent?: string; // Optional
+  youtubeLink?: string[]; // Optional
 }
-	

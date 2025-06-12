@@ -63,13 +63,14 @@ export class LoginComponent {
             let jwtToken=localStorage.getItem("jwtToken");
             let decode:any=jwtDecode(jwtToken!); // Decode the JWT token to ensure it's valid
             let userid=decode.userId
-          
+            let roles = decode.roles
             localStorage.setItem('userId', userid);
 
 
             localStorage.setItem('username', this.username);
             localStorage.setItem('isLoggedIn', 'true');
 
+            localStorage.setItem('roles', roles);
 
             
            

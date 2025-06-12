@@ -1,0 +1,190 @@
+        body {
+            font-family: 'Nunito', sans-serif; /* A modern and friendly font */
+            background-color: #f3f7fa; /* Light and airy background */
+            color: #4a5568;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            color: #2d3748;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .dashboard-header {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            width: 95%;
+            max-width: 1200px;
+            justify-content: space-around;
+        }
+
+        .dashboard-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-card h3 {
+            color: #2b6cb0;
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-card p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 0;
+        }
+
+        .user-progress-container {
+            width: 95%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .user-progress-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .user-progress-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-progress-item h3 {
+            color: #1a202c;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .user-info {
+            margin-bottom: 15px;
+            color: #718096;
+        }
+
+        .course-progress {
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background-color: #edf2f7;
+        }
+
+        .course-progress h4 {
+            color: #2d3748;
+            font-size: 1.25rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .progress-circle-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 10px auto;
+        }
+
+        .progress-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(#48bb78 var(--progress), #e0e0e0 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            color: #48bb78;
+            font-weight: bold;
+            transition: background 0.5s ease-in-out;
+        }
+
+        .progress-circle::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        .progress-circle span {
+            position: relative;
+        }
+
+        .course-progress p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .course-progress ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 10px;
+        }
+
+        .course-progress ul li {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-bottom: 5px;
+        }
+
+        .no-progress {
+            color: #777;
+            font-style: italic;
+        }
+
+        hr {
+            border-top: 1px solid #e2e8f0;
+            margin: 20px 0;
+        }
+
+        .alert-danger {
+            background-color: #fdeaea;
+            color: #e53e3e;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        /* Keyframe animation for loading (example) */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .user-progress-item {
+            animation: fadeIn 0.5s ease-in-out forwards;
+            opacity: 0;
+        }
+
+        /* You might need to adjust the delay for each item */
+        .user-progress-item:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+    

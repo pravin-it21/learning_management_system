@@ -1,0 +1,52 @@
+
+<body>
+<div class="container justify-content-center">
+    <div class="form-container">
+        <h3 class="text-center"><i class="fas fa-plus-circle me-2"></i> Create Quiz</h3>
+        <form #quizForm="ngForm" (ngSubmit)="onSubmit(quizForm)">
+
+            <div class="form-group">
+                <label for="totalMarks"><i class="fas fa-award me-2"></i> Total Marks:</label>
+                <input required type="number" name="totalMarks" [(ngModel)]="quizDetails.totalMarks" class="form-control" id="totalMarks">
+                <div *ngIf="quizForm.controls['totalMarks']?.invalid && quizForm.controls['totalMarks']?.touched" class="alert alert-danger">
+                    <div *ngIf="quizForm.controls['totalMarks']?.errors['required']">Provide Total Marks</div>
+                </div>
+            </div>
+
+            <div *ngFor="let question of questions; let i = index" class="question-container">
+                <h5>Question {{ i + 1 }} <i class="fas fa-puzzle-piece ms-2"></i></h5>
+                <div class="form-group">
+                    <label for="questionText{{i}}"><i class="fas fa-question-circle me-2"></i> Question Text:</label>
+                    <input required type="text" name="questions[{{i}}][text]" [(ngModel)]="question.text" class="form-control" id="questionText{{i}}" placeholder="Enter question text">
+                    <div *ngIf="quizForm.controls['questions['+i+'][text]']?.invalid && quizForm.controls['questions['+i+'][text]']?.touched" class="alert alert-danger">
+                        <div>Provide Question Text</div>
+                    </div>
+                </div>
+                <div class="form-group options-container">
+                    <label><i class="fas fa-list-ul me-2"></i> Options:</label>
+                    <div *ngFor="let option of question.options; let j = index" class="form-check">
+                        <input required class="form-control form-control-sm" type="text" name="questions[{{i}}][options][{{j}}][value]" [(ngModel)]="question.options[j].value" placeholder="Option {{ j + 1 }}" id="option{{i}}{{j}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="correctAnswer{{i}}"><i class="fas fa-check-circle me-2"></i> Correct Answer:</label>
+                    <select required class="form-control" name="questions[{{i}}][correctAnswerIndex]" [(ngModel)]="question.correctAnswerIndex" id="correctAnswer{{i}}">
+                        <option [ngValue]="null" disabled selected>Select Correct Answer</option>
+                        <option *ngFor="let k of [0, 1, 2, 3]" [ngValue]="k">Option {{ k + 1 }}</option>
+                    </select>
+                    <div *ngIf="quizForm.controls['questions['+i+'][correctAnswerIndex]']?.invalid && quizForm.controls['questions['+i+'][correctAnswerIndex]']?.touched" class="alert alert-danger">
+                        <div>Select the Correct Answer</div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-danger btn-sm mt-2" (click)="removeQuestion(i)"><i class="fas fa-trash me-2"></i> Remove</button>
+            </div>
+
+            <div class="form-group d-flex justify-content-end gap-2">
+                <button type="button" class="btn btn-info mt-3" (click)="addQuestion()"><i class="fas fa-plus me-2"></i> Add Question</button>
+                <button type="submit" [disabled]="!quizForm.valid" class="btn btn-primary mt-3"><i class="fas fa-check me-2"></i> Create Quiz</button>
+                <button type="button" (click)="resetForm(quizForm)" class="btn btn-secondary mt-3"><i class="fas fa-undo me-2"></i> Reset</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>

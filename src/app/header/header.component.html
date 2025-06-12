@@ -1,56 +1,73 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-        <a class="navbar-brand fw-bold text-white" href="#" style="font-size: 24px;">RESTO Learn</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link fw-medium text-light" routerLink="/home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-medium text-light" routerLink="/courses">Courses</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-medium text-light" routerLink="/enrollments">Enrollments</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-medium text-light" routerLink="/userenrollments">EnrollmentsUser</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-medium text-light" routerLink="/quiz">Quiz</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-medium text-light" routerLink="/progress">Progress</a>
-                </li>
-            </ul>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-white" href="#" style="font-size: 24px;">RESTO Learn</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <form class="d-flex">
-                <input class="form-control me-2 rounded-pill" type="search" placeholder="Search courses or topics" aria-label="Search">
-                <button class="btn btn-outline-warning rounded-pill" type="submit">Search</button>
-            </form>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium text-light" routerLink="/home" routerLinkActive="active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium text-light" routerLink="/about" routerLinkActive="active">About</a>
+                    </li>
+                    @if(isLoggedIn){
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium text-light" routerLink="/courses" routerLinkActive="active">Courses</a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium text-light" routerLink="/enrollments" *ngIf="userRole.toLowerCase() == 'admin'" routerLinkActive="active">Enrollments</a>
+                    </li>
 
-            <ul class="navbar-nav">
-                @if(isLoggedIn){
-                <li class="nav-item">
-                    <a class="nav-link fw-medium text-light" (click)="logout()" routerLink="/login">Logout</a>
-                </li>
-                }
-                @if(!isLoggedIn){
-                <li class="nav-item">
-                    <a class="nav-link fw-medium text-light" routerLink="/register">SignUp</a>
-                </li>
-                }
-                @if(!isLoggedIn){
-                <li class="nav-item">
-                    <a class="nav-link btn btn-success rounded-pill px-3" routerLink="/login">Login</a>
-                </li>
-                }
-            </ul>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium text-light" routerLink="/quiz" *ngIf="userRole.toLowerCase() == 'admin'" routerLinkActive="active">Quiz</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium text-light" routerLink="/progress" *ngIf="userRole.toLowerCase() == 'student'" routerLinkActive="active">Progress</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium text-light" routerLink="/admindashboard" *ngIf="userRole.toLowerCase() == 'admin'" routerLinkActive="active">Progress</a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center justify-content-center">
+                        <span class="nav-link fw-medium text-light" >Welcome, {{ loggedInUserName }}</span>
+                    </li>
+                    }
+                </ul>
+
+                <ul class="navbar-nav">
+                    @if(isLoggedIn){
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle fa-lg text-light"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" routerLink="/userenrollments" *ngIf="userRole.toLowerCase() == 'student'">My Courses</a></li>
+                            <li><a class="dropdown-item" routerLink="/instructorcourses" *ngIf="userRole.toLowerCase() == 'instructor'">My Courses</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" (click)="logout()" routerLink="/login">Logout</a></li>
+                        </ul>
+                    </li>
+                    }
+                    @if(!isLoggedIn){
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium text-light" routerLink="/register" routerLinkActive="active">SignUp</a>
+                    </li>
+                    }
+                    @if(!isLoggedIn){
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-success rounded-pill px-3" routerLink="/login" routerLinkActive="active">Login</a>
+                    </li>
+                    }
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-<div style="margin-top: 50px;"> <router-outlet/> </div>
+    </nav>
+    <div style="margin-top: 50px;"> <router-outlet/> </div>
+
+</body>

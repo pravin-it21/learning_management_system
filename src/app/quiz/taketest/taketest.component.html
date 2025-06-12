@@ -1,0 +1,124 @@
+<div class="container mt-5" *ngIf="quiz && !quizCompleted">
+    <h2>{{ quiz.title }}</h2>
+    <div class="alert alert-info text-center">
+        Total Quiz Time Remaining: <strong>{{ formatTime(quizTimer) }}</strong>
+    </div>
+
+    <form (ngSubmit)="submitQuiz()">
+        <div *ngFor="let questionKey of allQuestions; let i = index" class="mb-4 card shadow-sm animated fadeIn">
+            <div class="card-body">
+                <h5>Question {{ i + 1 }}: {{ quiz.questions[questionKey] }}</h5>
+                <div *ngIf="quiz.optionsJson">
+                    <div *ngFor="let option of getOptions(quiz.optionsJson, questionKey); let j = index">
+                        <div class="form-check">
+                            <input
+                                class="form-check-input"
+                                type="radio"
+                                name="question-{{questionKey}}"
+                                id="option-{{questionKey}}-{{j}}"
+                                [value]="option"
+                                (change)="onAnswerChange(questionKey, option)"
+                                [checked]="userResponses[questionKey] === option"
+                            />
+                            <label class="form-check-label" for="option-{{questionKey}}-{{j}}">
+                                {{ option }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!quiz.optionsJson">
+                    <div class="form-group">
+                        <textarea
+                            #textArea
+                            class="form-control"
+                            rows="3"
+                            [name]="'question-' + questionKey"
+                            (change)="onAnswerChange(questionKey, textArea.value)"
+                            [value]="userResponses[questionKey]"
+                            placeholder="Your Answer"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-3 w-100">Submit Quiz</button>
+    </form>
+</div>
+
+<div class="container mt-5" *ngIf="error">
+    <div class="alert alert-danger">{{ error }}</div>
+</div>
+
+<div class="container mt-5" *ngIf="submissionResponse">
+    <h3>Submission Response:</h3>
+    <div class="card shadow-sm p-3 animated fadeIn">
+        <div *ngFor="let response of convertObjectToArray(submissionResponse); let i = index">
+            <div *ngIf="response.key === 'score' || response.key === 'passed' || response.key === 'totalMarks'">
+                <strong>{{ response.key | titlecase }}:</strong> <span>{{ response.value }}</span>
+                <hr>
+            </div>
+        </div>
+
+        <div *ngIf="submissionResponse.responses">
+            <h4 class="mt-3">Your Answers:</h4>
+            <div *ngFor="let response of convertObjectToArray(submissionResponse.responses); let i = index">
+                <strong>Question {{ response.key }}:</strong> <span>{{ response.value }}</span>
+                <hr *ngIf="i < convertObjectToArray(submissionResponse.responses).length - 1">
+            </div>
+        </div>
+
+        <div *ngIf="submissionResponse.incorrectQuestions && convertObjectToArray(submissionResponse.incorrectQuestions).length > 0">
+            <h4 class="mt-3 text-danger">Incorrect Answers:</h4>
+            <div *ngFor="let incorrect of convertObjectToArray(submissionResponse.incorrectQuestions); let i = index">
+                <strong>Question {{ incorrect.key }}:</strong>
+                <span>Your Answer: {{ submissionResponse.responses[incorrect.key] || 'Not Answered' }}</span>,
+                <span>Correct Answer: {{ incorrect.value }}</span>
+                <hr *ngIf="i < convertObjectToArray(submissionResponse.incorrectQuestions).length - 1">
+            </div>
+        </div>
+        <div *ngIf="submissionResponse.incorrectQuestions && convertObjectToArray(submissionResponse.incorrectQuestions).length === 0 && submissionResponse.passed">
+            <h4 class="mt-3 text-success">Congratulations! All answers are correct.</h4>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mt-5" *ngIf="quizCompleted && previousSubmission">
+    <div class="alert alert-info animated fadeInUp">You have previously completed this quiz. Your previous responses are shown below.</div>
+    <h3 class="mt-4 animated fadeIn">Previous Submission Details</h3>
+    <div class="card shadow-sm p-3 animated fadeIn">
+        <div *ngFor="let response of convertObjectToArray(previousSubmission); let i = index">
+            <div *ngIf="response.key === 'score' || response.key === 'passed' || response.key === 'totalMarks'">
+                <strong>{{ response.key | titlecase }}:</strong> <span>{{ response.value }}</span>
+                <hr>
+            </div>
+        </div>
+
+        <div *ngIf="previousSubmission.responses">
+            <h4 class="mt-3">Your Answers:</h4>
+            <div *ngFor="let response of convertObjectToArray(previousSubmission.responses); let i = index">
+                <strong>Question {{ response.key }}:</strong> <span>{{ response.value }}</span>
+                <hr *ngIf="i < convertObjectToArray(previousSubmission.responses).length - 1">
+            </div>
+        </div>
+
+        <div *ngIf="previousSubmission.incorrectQuestions && convertObjectToArray(previousSubmission.incorrectQuestions).length > 0">
+            <h4 class="mt-3 text-danger">Incorrect Answers:</h4>
+            <div *ngFor="let incorrect of convertObjectToArray(previousSubmission.incorrectQuestions); let i = index">
+                <strong>Question {{ incorrect.key }}:</strong>
+                <span>Your Answer: {{ previousSubmission.responses[incorrect.key] || 'Not Answered' }}</span>,
+                <span>Correct Answer: {{ incorrect.value }}</span>
+                <hr *ngIf="i < convertObjectToArray(previousSubmission.incorrectQuestions).length - 1">
+                
+            </div>
+        </div>
+        <div *ngIf="previousSubmission.incorrectQuestions && convertObjectToArray(previousSubmission.incorrectQuestions).length === 0 && previousSubmission.passed">
+            <h4 class="mt-3 text-success">Congratulations! All answers were correct.</h4>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5" *ngIf="quizCompleted && !previousSubmission">
+    <div class="alert alert-info">You have already completed this quiz.</div>
+</div>

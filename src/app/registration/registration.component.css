@@ -12,3 +12,185 @@
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   }
   
+ 
+         body {
+             font-family: 'Sora', sans-serif;
+             min-height: 100vh;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             background: linear-gradient(135deg, #f8f9fa 0%, #e0f7fa 100%);
+             overflow: hidden;
+         }
+
+         .register-container {
+             background-color: white;
+             border-radius: 15px;
+             box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+             overflow: hidden;
+             width: 90%;
+             max-width: 600px; /* Adjust as needed */
+             animation: fadeIn 0.7s ease-out;
+         }
+
+         .card-header {
+             background-color: #000913 !important;
+             color: #eeb600 !important;
+             text-align: center;
+             padding: 2.5rem !important;
+         }
+
+         .card-header h3 {
+             font-family: 'Poppins', sans-serif;
+             font-size: 2.5rem;
+             font-weight: 700;
+             margin-bottom: 0;
+             animation: fadeInDown 0.7s ease-out;
+         }
+
+         .card-body {
+             padding: 3rem !important;
+             animation: slideInUp 0.7s ease-out;
+         }
+
+         .input-group {
+             margin-bottom: 2rem !important;
+             animation: fadeInUp 0.7s ease-out;
+         }
+
+         .input-group-text {
+             background-color: #000913 !important;
+             color: white !important;
+             border: none;
+             border-radius: 0.5rem 0 0 0.5rem;
+             padding: 1rem;
+         }
+
+         .form-floating {
+             position: relative;
+         }
+
+         .form-floating > .form-control,
+         .form-floating > .form-select {
+             padding: 1rem 0.75rem;
+             border-radius: 0 0.5rem 0.5rem 0;
+             border-left: none;
+             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         }
+
+         .form-floating > label {
+             position: absolute;
+             top: 0;
+             left: 0;
+             height: 100%;
+             padding: 1rem 0.75rem;
+             pointer-events: none;
+             border: 1px solid transparent;
+             transform-origin: 0 0;
+             transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+             opacity: 0.65;
+         }
+
+         .form-control:focus {
+             z-index: 3;
+             box-shadow: 0 0 0 0.25rem rgba(234, 161, 4, 0.25) !important;
+             border-color: #eaa104 !important;
+         }
+
+         .form-floating > .form-control:focus ~ label {
+             opacity: 0.85;
+         }
+
+         .form-floating > .form-control:not(:placeholder-shown) ~ label,
+         .form-floating > .form-select:not(:placeholder-shown) ~ label {
+             opacity: 0.85;
+             transform: translateY(-0.75rem) scale(0.85);
+         }
+
+         .invalid-feedback {
+             animation: shakeX 0.5s ease-in-out;
+         }
+
+         .btn-dark {
+             background-color: #000913 !important;
+             color: white !important;
+             border: none;
+             border-radius: 0.5rem;
+             padding: 1.2rem 2.5rem;
+             font-size: 1.1rem;
+             font-weight: 600;
+             cursor: pointer;
+             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+             animation: pulse 1.5s infinite alternate;
+         }
+
+         .btn-dark:hover {
+             transform: translateY(-3px);
+             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+         }
+
+         .btn-outline-secondary {
+             color: #000913 !important;
+             border-color: #000913 !important;
+             border-radius: 0.5rem;
+             padding: 1rem 2rem;
+             font-size: 1rem;
+             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+         }
+
+         .btn-outline-secondary:hover {
+             background-color: #eeb600 !important;
+             color: white !important;
+             border-color: #eeb600 !important;
+         }
+
+         .text-center {
+             animation: fadeInUp 0.7s ease-out 0.2s;
+         }
+
+         /* Animations */
+         @keyframes fadeIn {
+             from { opacity: 0; }
+             to { opacity: 1; }
+         }
+
+         @keyframes slideInUp {
+             from { transform: translateY(30px); opacity: 0; }
+             to { transform: translateY(0); opacity: 1; }
+         }
+
+         @keyframes fadeInUp {
+             from { transform: translateY(20px); opacity: 0; }
+             to { transform: translateY(0); opacity: 1; }
+         }
+
+         @keyframes fadeInDown {
+             from { transform: translateY(-20px); opacity: 0; }
+             to { transform: translateY(0); opacity: 1; }
+         }
+
+         @keyframes pulse {
+             0% { transform: scale(1); }
+             100% { transform: scale(1.03); }
+         }
+
+         @keyframes shakeX {
+             from, to { transform: translate3d(0, 0, 0); }
+             10%, 30%, 50%, 70%, 90% { transform: translate3d(-5px, 0, 0); }
+             20%, 40%, 60%, 80% { transform: translate3d(5px, 0, 0); }
+         }
+
+         /* Responsive Design */
+         @media (max-width: 768px) {
+             .register-container {
+                 width: 95%;
+             }
+             .card-body {
+                 padding: 2rem !important;
+             }
+             .card-header h3 {
+                 font-size: 2rem;
+             }
+         }
+     

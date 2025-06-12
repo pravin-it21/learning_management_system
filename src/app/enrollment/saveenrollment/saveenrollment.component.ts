@@ -20,7 +20,7 @@ export class SaveenrollmentComponent {
     this.myservice.saveEnrollment(saveEnrollment).subscribe(
       data => {
         alert(data); // Assuming the response contains a message property
-        this.router.navigate(['/Enrollments']);
+        this.router.navigate(['/enrollments']);
       },
       error => {
         console.error("Error adding course:", error);

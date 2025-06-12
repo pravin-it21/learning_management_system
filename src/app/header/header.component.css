@@ -1,0 +1,98 @@
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin-top: 60px; /* Adjust for fixed navbar height */
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: #000204 !important;
+            padding: 0.8rem 0; /* Reduced vertical padding */
+            box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-size: 1.75rem !important; /* Slightly smaller brand font */
+            color: #ffffff !important;
+            font-weight: 700;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff !important;
+            padding: 0.6rem 1rem !important; /* Reduced padding for links */
+            transition: color 0.3s ease-in-out;
+            font-size: 0.9rem; /* Slightly smaller link font */
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffffff !important;
+        }
+
+        .navbar-nav .nav-item.active .nav-link {
+            color: #ffffff !important;
+            font-weight: 600;
+        }
+
+        .navbar-toggler-icon {
+            background-color: #ffffff;
+        }
+
+        .navbar-nav .dropdown a.nav-link {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-nav .dropdown a.nav-link .fa-user-circle {
+            font-size: 1.4rem; /* Slightly smaller profile icon */
+            margin-left: 0.5rem;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            padding: 5px; /* Reduced padding for the icon */
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .navbar-nav .dropdown a.nav-link:hover .fa-user-circle {
+            transform: rotate(10deg);
+        }
+
+        .dropdown-menu {
+            background-color: #000000;
+            border: none;
+            border-radius: 0.4rem; /* Slightly smaller border radius */
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-item {
+            color: #ffffff;
+            padding: 0.5rem 1rem; /* Reduced padding for dropdown items */
+            font-size: 0.9rem; /* Slightly smaller dropdown item font */
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        .dropdown-divider {
+            border-top: 1px solid #6c757d;
+        }
+
+        .btn-success {
+            background-color: #28a745 !important;
+            border-color: #28a745 !important;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+            padding: 0.5rem 1rem !important; /* Reduced padding for the login button */
+            font-size: 0.9rem; /* Slightly smaller button font */
+            border-radius: 0.25rem; /* Slightly smaller border radius */
+        }
+
+        .btn-success:hover {
+            background-color: #218838 !important;
+            transform: scale(1.03); /* Slightly less scaling on hover */
+        }
+
+        .nav-item .nav-link.btn-success {
+            padding: 0.5rem 1rem !important;
+        }
+    
